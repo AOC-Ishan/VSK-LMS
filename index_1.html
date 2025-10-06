@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Learning Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Header Navigation -->
+        <header class="header">
+            <div class="container">
+                <div class="nav-container">
+                    <div class="logo">
+                        <h2>🎓 English LMS</h2>
+                    </div>
+                    <nav class="nav-menu">
+                        <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+                        <button class="nav-btn" data-section="courses">Courses</button>
+                        <button class="nav-btn" data-section="progress">Progress</button>
+                        <button class="nav-btn" data-section="forum">Forum</button>
+                        <button class="nav-btn" data-section="profile">Profile</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section class="section active" id="dashboard">
+                <div class="container">
+                    <h1>Welcome to Your English Learning Journey!</h1>
+                    <div class="dashboard-grid">
+                        <!-- Quick Stats -->
+                        <div class="stats-row">
+                            <div class="stat-card">
+                                <div class="stat-icon">📚</div>
+                                <div class="stat-content">
+                                    <h3 id="completed-lessons">0</h3>
+                                    <p>Lessons Completed</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">⏱️</div>
+                                <div class="stat-content">
+                                    <h3 id="study-streak">0</h3>
+                                    <p>Day Streak</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🏆</div>
+                                <div class="stat-content">
+                                    <h3 id="achievements-count">0</h3>
+                                    <p>Achievements</p>
+                                </div>
+                            </div>
+                            <div class="stat-card vsk-ai-card" onclick="toggleChatbot()">
+                                <div class="stat-icon">🤖</div>
+                                <div class="stat-content">
+                                    <h3>VSK AI</h3>
+                                    <p>Learning Assistant</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Overview -->
+                        <div class="course-overview-card card">
+                            <div class="card__header">
+                                <h3>📖 Business English Course</h3>
+                                <div class="course-progress">
+                                    <span class="progress-text">Progress: <span id="course-progress">0%</span></span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="progress-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card__body">
+                                <p>Master professional English communication in 12 weeks with interactive lessons and real-world practice.</p>
+                                <button class="btn btn--primary" onclick="showSection('courses')">Continue Learning</button>
+                            </div>
+                        </div>
+
+                        <!-- Recent Achievements -->
+                        <div class="achievements-card card">
+                            <div class="card__header">
+                                <h3>🎯 Recent Achievements</h3>
+                            </div>
+                            <div class="card__body">
+                                <div id="recent-achievements" class="achievements-list">
+                                    <p class="no-achievements">Start learning to earn your first achievement!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Courses Section -->
+            <section class="section" id="courses">
+                <div class="container">
+                    <h1>📚 Course Content</h1>
+                    <div class="course-content">
+                        <div class="course-sidebar">
+                            <h3>Course Modules</h3>
+                            <div class="modules-list" id="modules-list">
+                                <!-- Modules will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="course-main">
+                            <div class="lesson-content" id="lesson-content">
+                                <h2>Select a lesson to begin</h2>
+                                <p>Choose a lesson from the sidebar to start your learning journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="section" id="progress">
+                <div class="container">
+                    <h1>📊 Your Progress</h1>
+                    <div class="progress-grid">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Learning Statistics</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <span class="stat-value" id="total-lessons">4</span>
+                                        <span class="stat-label">Total Lessons</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value" id="completed-count">0</span>
+                                        <span class="stat-label">Completed</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value" id="quiz-average">0%</span>
+                                        <span class="stat-label">Quiz Average</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value" id="time-spent">0h</span>
+                                        <span class="stat-label">Time Spent</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>🏆 All Achievements</h3>
+                            </div>
+                            <div class="card__body">
+                                <div id="all-achievements" class="achievements-grid">
+                                    <!-- Achievements will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Forum Section -->
+            <section class="section" id="forum">
+                <div class="container">
+                    <h1>💬 Discussion Forum</h1>
+                    <div class="forum-content">
+                        <div class="forum-header">
+                            <button class="btn btn--primary" onclick="showNewPostForm()">✏️ New Post</button>
+                        </div>
+                        
+                        <!-- New Post Form -->
+                        <div class="new-post-form card hidden" id="new-post-form">
+                            <div class="card__header">
+                                <h3>Create New Post</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="form-group">
+                                    <label class="form-label" for="post-title">Title</label>
+                                    <input type="text" class="form-control" id="post-title" placeholder="Enter post title...">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="post-content">Content</label>
+                                    <textarea class="form-control" id="post-content" rows="4" placeholder="Share your thoughts..."></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn--primary" onclick="submitPost()">Post</button>
+                                    <button class="btn btn--outline" onclick="hideNewPostForm()">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Forum Posts -->
+                        <div class="forum-posts" id="forum-posts">
+                            <div class="forum-post card">
+                                <div class="card__body">
+                                    <div class="post-header">
+                                        <h4>Welcome to the English Learning Community!</h4>
+                                        <span class="post-meta">By Admin • 2 hours ago</span>
+                                    </div>
+                                    <p>Hello everyone! Welcome to our English learning community. Feel free to ask questions, share tips, and help each other improve!</p>
+                                    <div class="post-actions">
+                                        <button class="btn btn--sm btn--outline">👍 Like (5)</button>
+                                        <button class="btn btn--sm btn--outline">💬 Reply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section class="section" id="profile">
+                <div class="container">
+                    <h1>👤 Your Profile</h1>
+                    <div class="profile-content">
+                        <div class="profile-card card">
+                            <div class="card__body">
+                                <div class="profile-header">
+                                    <div class="profile-avatar">👤</div>
+                                    <div class="profile-info">
+                                        <h2 id="user-name">English Learner</h2>
+                                        <p class="profile-role">Student</p>
+                                        <span class="status status--info">Level: Beginner</span>
+                                    </div>
+                                </div>
+                                <div class="profile-stats">
+                                    <div class="profile-stat">
+                                        <span class="stat-number" id="profile-lessons">0</span>
+                                        <span class="stat-text">Lessons Completed</span>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <span class="stat-number" id="profile-streak">0</span>
+                                        <span class="stat-text">Day Streak</span>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <span class="stat-number" id="profile-achievements">0</span>
+                                        <span class="stat-text">Achievements</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-settings card">
+                            <div class="card__header">
+                                <h3>⚙️ Settings</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="form-group">
+                                    <label class="form-label" for="display-name">Display Name</label>
+                                    <input type="text" class="form-control" id="display-name" placeholder="Your name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="learning-goal">Learning Goal</label>
+                                    <select class="form-control" id="learning-goal">
+                                        <option value="business">Business English</option>
+                                        <option value="academic">Academic English</option>
+                                        <option value="general">General Communication</option>
+                                        <option value="travel">Travel English</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn--primary">Save Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Quiz Modal -->
+        <div class="modal hidden" id="quiz-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="quiz-title">Lesson Quiz</h3>
+                    <button class="modal-close" onclick="closeQuiz()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="quiz-progress">
+                        <span id="quiz-progress">Question 1 of 3</span>
+                        <div class="quiz-progress-bar">
+                            <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="quiz-question" id="quiz-question">
+                        <!-- Question content will be populated by JavaScript -->
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="btn btn--primary" id="quiz-submit" onclick="submitAnswer()">Submit Answer</button>
+                        <button class="btn btn--outline hidden" id="quiz-next" onclick="nextQuestion()">Next Question</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VSK AI Chatbot -->
+        <div class="chatbot-container">
+            <div class="chatbot-toggle" id="chatbot-toggle" onclick="toggleChatbot()">
+                <span class="chatbot-icon">🤖</span>
+                <span class="chatbot-text">VSK AI</span>
+            </div>
+            <div class="chatbot-window hidden" id="chatbot-window">
+                <div class="chatbot-header">
+                    <div class="chatbot-title">
+                        <span class="chatbot-avatar">🤖</span>
+                        <div>
+                            <h4>VSK AI</h4>
+                            <span class="chatbot-status">English Learning Assistant</span>
+                        </div>
+                    </div>
+                    <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+                </div>
+                <div class="chatbot-messages" id="chatbot-messages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            <p>Hello! I'm VSK AI, your English learning assistant. How can I help you today? 😊</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbot-input">
+                    <input type="text" id="chatbot-input" placeholder="Ask me anything about English..." />
+                    <button id="chatbot-send" onclick="sendMessage()">
+                        <span>📤</span>
+                    </button>
+                </div>
+                <div class="typing-indicator hidden" id="typing-indicator">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span>VSK AI is typing...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

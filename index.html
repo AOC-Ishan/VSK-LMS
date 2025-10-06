@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnglishMaster LMS - Learn English Easily</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <h2>🎓 EnglishMaster</h2>
+            </div>
+            <ul class="nav__menu">
+                <li><a href="#" class="nav__link" data-view="dashboard">Dashboard</a></li>
+                <li><a href="#" class="nav__link" data-view="courses">Courses</a></li>
+                <li><a href="#" class="nav__link" data-view="progress">Progress</a></li>
+                <li><a href="#" class="nav__link" data-view="profile">Profile</a></li>
+                <li><a href="#" class="nav__link" data-view="forums">Forums</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main">
+        <!-- Dashboard/Landing Page -->
+        <section id="dashboard" class="view active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero__content">
+                        <h1>Learn Business English Easily</h1>
+                        <p>Master professional English communication skills with our comprehensive 12-week course designed for everyone, regardless of your current level.</p>
+                        <div class="hero__actions">
+                            <button class="btn btn--primary btn--lg" onclick="enrollInCourse()">Start Learning</button>
+                            <button class="btn btn--outline btn--lg" data-view="courses">View Courses</button>
+                        </div>
+                    </div>
+                    <div class="hero__stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="completedLessons">0</div>
+                            <div class="stat-label">Lessons Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="streakDays">0</div>
+                            <div class="stat-label">Day Streak</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalBadges">0</div>
+                            <div class="stat-label">Badges Earned</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="dashboard-content">
+                    <div class="section">
+                        <h3>Your Learning Progress</h3>
+                        <div class="progress-overview">
+                            <div class="progress-card">
+                                <h4>Current Week: Week 1</h4>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="weekProgress"></div>
+                                </div>
+                                <p>Introduction & Basics</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3>Featured Lessons</h3>
+                        <div class="lesson-grid" id="featuredLessons">
+                            <!-- Lessons will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses View -->
+        <section id="courses" class="view">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" data-view="dashboard">Dashboard</a> > Courses
+                </div>
+                
+                <div class="course-header">
+                    <h1>Comprehensive Business English Course</h1>
+                    <div class="course-meta">
+                        <span class="meta-item">📅 12 weeks</span>
+                        <span class="meta-item">⏱️ 3 hours per session</span>
+                        <span class="meta-item">📚 2 sessions per week</span>
+                        <span class="meta-item">🎯 Beginner to Advanced</span>
+                    </div>
+                </div>
+
+                <div class="course-content">
+                    <div class="week-modules" id="courseModules">
+                        <!-- Course modules will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson Interface -->
+        <section id="lesson" class="view">
+            <div class="container">
+                <div class="breadcrumb" id="lessonBreadcrumb">
+                    <!-- Dynamic breadcrumb -->
+                </div>
+                
+                <div class="lesson-container">
+                    <div class="lesson-content">
+                        <div class="lesson-header">
+                            <h1 id="lessonTitle">Loading lesson...</h1>
+                            <div class="lesson-meta">
+                                <span id="lessonDuration">45 min</span>
+                                <span id="lessonType">Interactive</span>
+                            </div>
+                        </div>
+                        
+                        <div class="lesson-body">
+                            <div class="content-area">
+                                <div id="lessonContent">
+                                    <!-- Dynamic lesson content -->
+                                </div>
+                                
+                                <div class="multimedia-section">
+                                    <div class="video-placeholder">
+                                        <div class="placeholder-content">
+                                            <h4>📹 Video Lesson</h4>
+                                            <p>Interactive video content would be displayed here</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="audio-section">
+                                        <h4>🎧 Audio Practice</h4>
+                                        <div class="audio-controls">
+                                            <button class="btn btn--secondary">Play Pronunciation</button>
+                                            <button class="btn btn--secondary">Listen to Dialogue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="lesson-sidebar">
+                                <div class="notes-section card">
+                                    <h4>📝 My Notes</h4>
+                                    <textarea id="lessonNotes" placeholder="Take notes during the lesson..."></textarea>
+                                    <button class="btn btn--secondary btn--sm" onclick="saveNotes()">Save Notes</button>
+                                </div>
+                                
+                                <div class="resources-section card">
+                                    <h4>📎 Resources</h4>
+                                    <ul class="resource-list">
+                                        <li><a href="#" target="_blank">📄 Lesson Worksheet</a></li>
+                                        <li><a href="#" target="_blank">🎯 Practice Exercises</a></li>
+                                        <li><a href="#" target="_blank">📚 Additional Reading</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="lesson-navigation">
+                            <button class="btn btn--outline" id="prevLessonBtn" onclick="navigateLesson('prev')">⬅ Previous Lesson</button>
+                            <button class="btn btn--primary" onclick="completeLesson()">Mark Complete</button>
+                            <button class="btn btn--outline" id="nextLessonBtn" onclick="navigateLesson('next')">Next Lesson ➡</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz/Assessment View -->
+        <section id="quiz" class="view">
+            <div class="container">
+                <div class="quiz-container">
+                    <div class="quiz-header">
+                        <h2 id="quizTitle">Business Greetings Quiz</h2>
+                        <div class="quiz-progress">
+                            <div class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">2</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="quizProgress"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-content" id="quizContent">
+                        <!-- Quiz questions will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="quiz-actions">
+                        <button class="btn btn--outline" id="prevQuestionBtn" onclick="previousQuestion()">Previous</button>
+                        <button class="btn btn--primary" id="nextQuestionBtn" onclick="nextQuestion()">Next</button>
+                        <button class="btn btn--primary hidden" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Tracking View -->
+        <section id="progress" class="view">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" data-view="dashboard">Dashboard</a> > Progress
+                </div>
+                
+                <h1>Your Learning Progress</h1>
+                
+                <div class="progress-dashboard">
+                    <div class="progress-overview-cards">
+                        <div class="card">
+                            <h3>Overall Progress</h3>
+                            <div class="circular-progress">
+                                <div class="progress-value" id="overallProgress">0%</div>
+                            </div>
+                            <p>Course completion</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h3>This Week</h3>
+                            <div class="week-stats">
+                                <div class="stat">
+                                    <span class="stat-number" id="weekLessons">0</span>
+                                    <span class="stat-label">Lessons</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number" id="weekQuizzes">0</span>
+                                    <span class="stat-label">Quizzes</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <h3>Achievements</h3>
+                            <div class="badge-showcase" id="badgeShowcase">
+                                <!-- Badges will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detailed-progress">
+                        <h3>Weekly Progress</h3>
+                        <div class="week-progress-list" id="weekProgressList">
+                            <!-- Week progress will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Profile View -->
+        <section id="profile" class="view">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" data-view="dashboard">Dashboard</a> > Profile
+                </div>
+                
+                <div class="profile-container">
+                    <div class="profile-header card">
+                        <div class="profile-avatar">👤</div>
+                        <div class="profile-info">
+                            <h2 id="userName">Student</h2>
+                            <p class="profile-title">English Learner</p>
+                            <div class="profile-stats">
+                                <span>Joined: October 2025</span>
+                                <span>Level: Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-content">
+                        <div class="profile-section card">
+                            <h3>Learning Goals</h3>
+                            <div class="goals-form">
+                                <div class="form-group">
+                                    <label class="form-label">Daily Study Time Goal</label>
+                                    <select class="form-control" id="studyTimeGoal">
+                                        <option value="30">30 minutes</option>
+                                        <option value="60" selected>1 hour</option>
+                                        <option value="90">1.5 hours</option>
+                                        <option value="120">2 hours</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Weekly Goal</label>
+                                    <select class="form-control" id="weeklyGoal">
+                                        <option value="2">2 lessons per week</option>
+                                        <option value="4" selected>4 lessons per week</option>
+                                        <option value="6">6 lessons per week</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn--primary" onclick="saveProfile()">Save Goals</button>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section card">
+                            <h3>Achievement Gallery</h3>
+                            <div class="achievement-gallery" id="achievementGallery">
+                                <!-- Achievements will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section card">
+                            <h3>Learning Statistics</h3>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-number">0</span>
+                                    <span class="stat-label">Total Study Hours</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">0</span>
+                                    <span class="stat-label">Quizzes Completed</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">0</span>
+                                    <span class="stat-label">Perfect Scores</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">0</span>
+                                    <span class="stat-label">Forum Posts</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forums View -->
+        <section id="forums" class="view">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" data-view="dashboard">Dashboard</a> > Discussion Forums
+                </div>
+                
+                <div class="forums-container">
+                    <div class="forums-header">
+                        <h1>Discussion Forums</h1>
+                        <button class="btn btn--primary" onclick="openNewTopicModal()">New Topic</button>
+                    </div>
+                    
+                    <div class="forum-categories">
+                        <div class="category-card active" data-category="general">
+                            <h3>General Discussion</h3>
+                            <p>General English learning topics and questions</p>
+                            <span class="post-count">12 posts</span>
+                        </div>
+                        <div class="category-card" data-category="grammar">
+                            <h3>Grammar Help</h3>
+                            <p>Get help with English grammar questions</p>
+                            <span class="post-count">8 posts</span>
+                        </div>
+                        <div class="category-card" data-category="business">
+                            <h3>Business English</h3>
+                            <p>Professional communication discussions</p>
+                            <span class="post-count">15 posts</span>
+                        </div>
+                    </div>
+                    
+                    <div class="forum-posts" id="forumPosts">
+                        <!-- Forum posts will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Quiz Results Modal -->
+    <div id="quizResultsModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Quiz Results</h3>
+                <button class="modal-close" onclick="closeQuizResults()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="results-summary" id="resultsContent">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+                <div class="results-actions">
+                    <button class="btn btn--outline" onclick="retryQuiz()">Retry Quiz</button>
+                    <button class="btn btn--primary" onclick="continueToNextLesson()">Continue Learning</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Topic Modal -->
+    <div id="newTopicModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Discussion Topic</h3>
+                <button class="modal-close" onclick="closeNewTopicModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newTopicForm">
+                    <div class="form-group">
+                        <label class="form-label">Topic Title</label>
+                        <input type="text" class="form-control" id="topicTitle" placeholder="Enter topic title...">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-control" id="topicCategory">
+                            <option value="general">General Discussion</option>
+                            <option value="grammar">Grammar Help</option>
+                            <option value="business">Business English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" id="topicMessage" rows="5" placeholder="Write your message..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn--outline" onclick="closeNewTopicModal()">Cancel</button>
+                        <button type="submit" class="btn btn--primary">Create Topic</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
